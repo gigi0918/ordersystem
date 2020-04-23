@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>雞排好好吃</title>    
+    <link rel="stylesheet" href="style2.css">
+    
+    
+</head>
+
+
+<body>
+    <div id="app">
+            <nav>
+                <ul class="flex-nav">
+                    <li><a>購物明細</a></li>
+       
+                </ul>
+    
+
+            <table class="for-table "  style="text-align: center;" >
+                <thead>
+                <tr class="title">
+                    <th class="name1">商品</th>
+                    <th class="price1">單價</th>
+                    <th class="count1">數量</th>
+                    <th class="amount1">小計</th>
+                 </tr>
+                </thead>
+                <tbody></tbody>
+
+                    
+                </table>
+        
+        
+                <div class="totalPrice">總金額: <input class="amoun" id="totalPrice" type="text">
+                   
+
+                <div class="purchase">
+                      <font size="5">付款方式: </font>
+          
+                      <form action="/action_page.php">
+                          <input type="radio" name="choice" value="online">線上轉帳匯款<br>
+                          <input type="radio" name="choice" value="ATM">ATM虛擬帳戶匯款<br>
+                          <input type="radio" name="choice" value="card">信用卡線上刷卡<br>
+                          <input type="radio" name="choice" value="home">宅配貨到付款<br>
+                          <input type="radio" name="choice" value="store" checked>超商取貨付款<br><br>
+                      </form>
+                  </div>
+          
+              </div>
+              <div class="time_block" id="time_block"></div>
+              
+              <input class="buy" type="button" onclick="alert('下單完成 !')" value="確認"></input>
+              <input class="cancel"" type="button" onclick="cancel()" value="取消訂單"></input>
+          
+        
+
+    </div>
+
+    <script >
+
+        
+
+        //購物清單
+        var url = location.search;  //接收購物清單字串
+            // turn 購物清單字串
+            turn = decodeURI(url)   //轉為UTF-8
+    
+            console.log(turn);
+            var str1 = turn.split('=');
+            console.log("str1= ", str1);
+            console.log("str1[1]= ", str1[1])
+            var str2 = str1[1].split('&')
+            console.log("str2[0]= ", str2[0])
+            console.log("str2[1]= ", str2[1])
+            
+          //  orderMenu(str1[1]);
+
+       
+        var total_money = str1[2];          
+          console.log("str1[2]= ", str1[2])
+        // console.log("total_money= ", total_money);
+         document.getElementById("totalPrice").value = total_money;
+         document.getElementById("totalPrice").disabled = true;　// 變更欄位為禁用
+
+            var orderList = JSON.parse(str2[0]);  // 字串轉成JSON格式
+            
+            
+             console.log("orderList=", orderList)
+
+            var forTable = document.querySelector('.for-table tbody');
+
+            
+           for (var i = 0; i< orderList.length; i++) {
+                // console.log(i, "amount", orderList[i].amount)
+                // console.log(i, "price", orderList[i].price)
+                var countTotal=0;
+                if ((orderList[i].count != 0) && (orderList[i].price != 0)) {
+                    forTable.innerHTML += 
+                  '<tr>' +
+                        '<td>' + orderList[i].itemName + '</td>' +
+                        '<td>' + orderList[i].price + '</td>' +
+                        '<td>' + orderList[i].count + '</td>' +
+                        '<td>' + orderList[i].amount+ '</td>' +
+                 '</tr>';
+                   
+                    
+                }
+              //  document.getElementById('orderMenu').innerHTML = forTable.innerHTML
+            }
+            // console.log(orderList[i])
+            // console.log("orderString=", orderString);*/
+
+            function cancel() {
+            window.open('home.html', "_blank"); //回到上一頁
+            }
+            
+ 
+        
+    
+    </script>
+
+
+</body>
+</html>

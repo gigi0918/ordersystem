@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>雞排好好吃</title>
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <div id="app">
+        <nav>
+            <ul class="flex-nav">
+                <li><a href="#">雞排好好吃點餐系統</a></li>
+   
+            </ul>
+        <div class="container">
+            <div class="item_header">
+                <div class="item_detail">商品</div>
+                <div class="price">單價</div>
+                <div class="count">數量</div> 
+                <div class="amount">小計</div>
+    
+            </div>
+            <div class="item_container" v-for="(item, index) in itemList" :key="item.id" >
+                    <div class="item_header item_body">
+                            <div class="item_detail">
+                                <img v-bind:src="item.imgUrl" alt="">
+                                <div class="name">{{item.itemName}}</div>
+                            </div>                           
+                            <div class="price"><span>$</span>{{item.price}}</div>
+                            <div class="count">
+                                <button @click="handleSub(item)">-</button>
+                                {{item.count}}
+                                <button @click="handlePlus(item)">+</button>
+                            </div> 
+                            <div class="amount">{{item.amount=item.price * item.count}}</div>   
+                    </div>
+            </div>
+        </div>
+        
+        <p class="total" >總計:{{countTotal()}}</p>
+        <p class="pay">
+            <button @click="handlepay()">付款</button>
+            </p>
+
+    </div>
+
+</body>
+
+<script src="main.js"></script>
+</html>

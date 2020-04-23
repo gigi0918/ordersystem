@@ -1,0 +1,65 @@
+
+
+body{
+    background-color: rgba(0, 0, 0,.2);
+ }
+ nav > ul {
+     background-color: rgb(230, 230, 230);
+     list-style: none;   /* 移除項目符號 */
+     margin: 0;
+     padding: 0;
+ }
+ 
+ nav a {
+     color: inherit; /* 移除超連結顏色 */
+     display: block; /* 讓 <a> 填滿 <li> */
+     font-size: 1.2rem;
+     padding: 10px;
+     text-decoration: none;  /* 移除超連結底線 */
+ }
+ 
+ /* 滑鼠移到 <a> 時變成深底淺色 */
+ /*nav li:hover {
+     background-color: rgb(115, 115, 115);
+     color: white;
+ }*/
+ 
+ .flex-nav {
+     display: flex;
+     justify-content: center;
+ }
+ 
+ .inline-block-nav {
+     text-align: center;
+     /*font-size: 5;   /* 移除 <li> 之間的空隙 */
+ }
+ 
+ .inline-block-nav > li {
+     display: inline-block;
+ }
+         
+ .item_header{
+     display: flex;
+     width: 1000px;
+     margin: 0 auto;
+     height: 30px;
+     background-color: #fff;
+     border-radius: 3px;
+     padding-left: 10px;
+ }
+.table {
+    /**/
+    border-collapse: collapse;
+    width:200px;
+}
+
+.table, td, th {
+    /*框線顏色*/
+    border: 1px solid black;
+}
+.th{
+    height:50px;
+    color:white;
+}
+
+ 
